@@ -5,6 +5,10 @@ import SideBar from "./components/SideBar"
 import Banner from "./components/Banner"
 import bannerBackground from './assets/Banner.png'
 import Gallery from "./components/Gallery"
+import photo from "./json/photo.json"
+import { useState } from "react"
+import ModalZoom from "./components/ModalZoom"
+
 
 
 const BackgroundGradient = styled.div`
@@ -29,8 +33,9 @@ const MainContainer = styled.main`
     padding:24px;
 `
 
-function App() {
-
+const App = () => {
+  const [PhotosFromGallery, setPhotosFromGallery] = useState(photo)
+  const [SelectedPhoto, setSelectedPhoto] = useState(null)
   return (
     <BackgroundGradient>
       <GlobalStyle />
@@ -39,17 +44,19 @@ function App() {
         <MainContainer>
           <SideBar />
           <ContentGallery>
-
-          <Banner
-            text="The most complete Gallery of Photos from our Safari!"
-            backgroundImage={bannerBackground}
-          />
-
-          <Gallery />
+            <Banner
+              text="The most complete Gallery of Photos from our Safari!"
+              backgroundImage={bannerBackground}
+            />
+            <Gallery
+              OnZoomRequested={photo => setSelectedPhoto(photo)}
+              photos={PhotosFromGallery}
+            />
           </ContentGallery>
         </MainContainer>
 
       </AppContainer>
+      <ModalZoom photo={SelectedPhoto} close={() => setSelectedPhoto(null)} />
     </BackgroundGradient>
   )
 }

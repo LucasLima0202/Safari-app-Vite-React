@@ -1,7 +1,7 @@
 [
     {
         "id": 0,
-        "title": "Todas"
+        "title": "All"
     },
     {
         "id": 1,
@@ -18,5 +18,9 @@
     {
         "id": 4,
         "title": "Underground"
+    },
+    {
+        "id": 5,
+        "title": "Artic"
     }
 ]

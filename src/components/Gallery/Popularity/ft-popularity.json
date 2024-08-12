@@ -1,0 +1,27 @@
+[
+    {
+      "path": "/images/featured/grid.png",
+      "alt": "grid",
+      "id": 1
+    },
+    {
+      "path": "/images/featured/wind.png",
+      "alt": "wind",
+      "id": 2
+    },
+    {
+      "path": "/images/featured/mast.png",
+      "alt": "mast",
+      "id": 3
+    },
+    {
+      "path": "/images/featured/abyss.png",
+      "alt": "abyss",
+      "id": 4
+    },
+    {
+      "path": "/images/featured/purific.png",
+      "alt": "purific",
+      "id": 5
+    }
+  ]
