@@ -20,7 +20,7 @@ const ImgContainer = styled.section`
     gap: 24px;
 `
 
-const Gallery = ({ photos = [], OnZoomRequested }) => {
+const Gallery = ({ photos = [], OnZoomRequested,onToogleFavorite}) => {
     return (
      <>
       <Tags />
@@ -32,6 +32,7 @@ const Gallery = ({ photos = [], OnZoomRequested }) => {
                photo={photo}
                OnZoomRequested={OnZoomRequested}
                key={photo.id}
+               onToogleFavorite={onToogleFavorite} 
                />)} 
               </ImgContainer>
           </SectionFloat>

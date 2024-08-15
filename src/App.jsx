@@ -36,6 +36,16 @@ const MainContainer = styled.main`
 const App = () => {
   const [PhotosFromGallery, setPhotosFromGallery] = useState(photo)
   const [SelectedPhoto, setSelectedPhoto] = useState(null)
+
+  const onToogleFavorite = (photo) => {
+    setPhotosFromGallery(PhotosFromGallery.map(item => {
+        return {
+            ...item,
+            favorite: item.id === photo.id ? !item.favorite : PhotosFromGallery.favorite
+        };
+    }));
+}
+
   return (
     <BackgroundGradient>
       <GlobalStyle />
@@ -50,6 +60,7 @@ const App = () => {
             />
             <Gallery
               OnZoomRequested={photo => setSelectedPhoto(photo)}
+              onToogleFavorite={onToogleFavorite}
               photos={PhotosFromGallery}
             />
           </ContentGallery>
