@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import tags from "./tags.json"
+import { useEffect, useState } from "react";
 
 const ContainerTags = styled.div`
 display:flex;
@@ -35,15 +36,24 @@ const ButtonTag = styled.button`
         font-weight: 600;
     }
     `
+const Div = styled.div`
+display: flex;
+gap: 24px;
+justify-content: end;
+`
 
 
-
-const Tags = () => {
-
+const Tags = ({setTag}) => {
     return (
         <ContainerTags>
             <TitleTag>Search for Tags :</TitleTag>
-            {tags.map(tag => <ButtonTag key={tag.id}>{tag.title}</ButtonTag>)}
+            <Div>
+                {tags.map(tag => <ButtonTag 
+                key={tag.id}
+                onClick={() => setTag(tag.tag)}
+                >{tag.title}
+                </ButtonTag>)}
+            </Div>
         </ContainerTags>
     )
 }

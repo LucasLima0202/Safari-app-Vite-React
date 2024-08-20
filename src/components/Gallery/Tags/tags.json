@@ -5,22 +5,27 @@
     },
     {
         "id": 1,
-        "title": "Forest"
+        "title": "Forest",
+        "tag":1
     },
     {
         "id": 2,
-        "title": "Urban"
+        "title": "Urban",
+        "tag":2
     },
     {
         "id": 3,
-        "title": "Aquatic"
+        "title": "Aquatic",
+        "tag":3
     },
     {
         "id": 4,
-        "title": "Underground"
+        "title": "Underground",
+        "tag":4
     },
     {
         "id": 5,
-        "title": "Artic"
+        "title": "Artic",
+        "tag":5
     }
 ]

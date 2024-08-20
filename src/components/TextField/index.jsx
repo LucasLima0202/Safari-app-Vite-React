@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import search from "/images/search.svg"
+import searchIcon from "/images/search.svg"
+import { useEffect, useState } from "react";
 
 const TextField_Container_Stylized = styled.div`
    position: relative;
@@ -30,12 +31,11 @@ const Icon = styled.img`
     height: 30px;
 `;
 
-const TextField = (props) => {
-
+const TextField = ({props, setFilter}) => {
     return (
         <TextField_Container_Stylized>
-            <TextField_Input_Stylized placeholder="What are you looking for?" {...props} />
-            <Icon src={search} alt="icon" />
+            <TextField_Input_Stylized placeholder="What are you looking for?" {...props}  onChange={event => setFilter(event.target.value)} />
+            <Icon src={searchIcon} alt="icon" />
         </TextField_Container_Stylized>
     )
 }

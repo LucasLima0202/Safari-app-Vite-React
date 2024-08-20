@@ -3,6 +3,7 @@ import Title from "../Title";
 import Tags from "./Tags";
 import Popularity from "./Popularity";
 import Image from "./Image";
+import { useState } from "react";
 
 
 const GalleryContainer = styled.div`
@@ -20,16 +21,21 @@ const ImgContainer = styled.section`
     gap: 24px;
 `
 
-const Gallery = ({ photos = [], OnZoomRequested,onToogleFavorite}) => {
+const Gallery = ({ photos = [],setTag, OnZoomRequested,onToogleFavorite}) => {
+   
+    
+ 
+
     return (
      <>
-      <Tags />
+      <Tags setTag={setTag}/>
       <GalleryContainer>
           <SectionFloat>
              <Title> Browse the gallery </Title>
              <ImgContainer>
                {photos.map(photo => <Image 
                photo={photo}
+               tag={photo.tagId}
                OnZoomRequested={OnZoomRequested}
                key={photo.id}
                onToogleFavorite={onToogleFavorite} 

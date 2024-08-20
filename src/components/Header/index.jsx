@@ -11,11 +11,11 @@ const Header_Stylized = styled.header`
     }
 `
 
- const Header = () => {
+ const Header = ({filter,setFilter}) => {
     return (
         <Header_Stylized>
             <img src="/images/logo.svg" alt="img" />
-            <TextField/>
+            <TextField filter={filter} setFilter={setFilter}/>
         </Header_Stylized>
     )
 }

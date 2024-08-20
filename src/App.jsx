@@ -6,8 +6,9 @@ import Banner from "./components/Banner"
 import bannerBackground from './assets/Banner.png'
 import Gallery from "./components/Gallery"
 import photo from "./json/photo.json"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ModalZoom from "./components/ModalZoom"
+import Footer from "./components/Footer"
 
 
 
@@ -36,8 +37,30 @@ const MainContainer = styled.main`
 const App = () => {
   const [PhotosFromGallery, setPhotosFromGallery] = useState(photo)
   const [SelectedPhoto, setSelectedPhoto] = useState(null)
+  
+  // no topo estou declarando os estados dela sempre efeito cascada
+  const [filter,setFilter] = useState('')
+  const [tag,setTag] = useState(0)
 
-  const onToogleFavorite = (photo) => {
+  useEffect(() => {
+    const PhotoWithFilter = photo.filter(photo => {
+      const FilterByTag = !tag || photo.tagId === tag;
+      const FilterByTitle = !filter || photo.title.toLowerCase().includes(filter.toLowerCase())
+      return FilterByTag && FilterByTitle
+    })
+    setPhotosFromGallery(PhotoWithFilter)
+  }, [filter, tag])
+
+
+    const onToogleFavorite = (photo) => {
+      if (photo.id === SelectedPhoto?.id) {
+          setSelectedPhoto({
+              ...SelectedPhoto,
+              favorite: !SelectedPhoto.favorite
+              
+          });
+      
+  }
     setPhotosFromGallery(PhotosFromGallery.map(item => {
         return {
             ...item,
@@ -50,7 +73,10 @@ const App = () => {
     <BackgroundGradient>
       <GlobalStyle />
       <AppContainer>
-        <Header />
+        <Header 
+        filter={filter}
+        setFilter={setFilter}
+        />
         <MainContainer>
           <SideBar />
           <ContentGallery>
@@ -62,12 +88,18 @@ const App = () => {
               OnZoomRequested={photo => setSelectedPhoto(photo)}
               onToogleFavorite={onToogleFavorite}
               photos={PhotosFromGallery}
+              setTag={setTag}
             />
           </ContentGallery>
         </MainContainer>
 
       </AppContainer>
-      <ModalZoom photo={SelectedPhoto} close={() => setSelectedPhoto(null)} />
+      <ModalZoom 
+      photo={SelectedPhoto} 
+      close={() => setSelectedPhoto(null)} 
+      onToogleFavorite={onToogleFavorite} 
+      />
+      <Footer></Footer>
     </BackgroundGradient>
   )
 }

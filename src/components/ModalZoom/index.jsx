@@ -29,13 +29,13 @@ const DialogStylized = styled.dialog`
     }
 `
 
-const ModalZoom = ({photo, close}) => {
+const ModalZoom = ({photo, close, onToogleFavorite}) => {
     return (
         <>
             {photo && <>
                 <Overlay />
                 <DialogStylized open={!!photo}  onClose={close}>
-                    <Image photo={photo} expand={true} />
+                    <Image photo={photo} expand={true} onToogleFavorite={onToogleFavorite} />
                     <form method="dialog">
                         <IconButton formMethod="dialog">
                             <img src="/images/icon/close.svg" alt="Icon Close" />

@@ -49,10 +49,10 @@ const Footer = styled.footer`
 const Image = ({ photo, expand = false, OnZoomRequested, onToogleFavorite }) => {
 
   const iconFavorite = photo.favorite ? heart_fill : heart_out
-  
+
   return (
     <Figure $expand={expand}  id={`foto-${photo.id}`}>
-      <img src={photo.path} alt={photo.title} />
+      <img src={photo.path} alt={photo.tagId} />
       <figcaption>
         <h3>{photo.title}</h3>
         <Footer>
